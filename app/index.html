@@ -1,0 +1,128 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Your blog</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="angularTrainingApp" >
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="container">
+      <div class="header">
+        <img src="images/logo.png">
+        <ul class="nav">
+          <li class="divider"><a ng-href="Javascript">Javascript</a></li>
+          <li  class="divider"><a ng-href="CSS">CSS</a></li>
+          <li  class="active divider"><a ng-href="Latest">Latest</a></li>
+          <li  class="divider"><a ng-href="HTML">HTML</a></li>
+          <li class="divider"><a ng-href="Design">Design</a></li>
+        </ul>
+      </div>
+
+        <div class="row"   ng-controller="MainCtrl">
+            <div class="col-sm-8 blog-main">
+                <div class="blog-post" ng-repeat="post in posts">
+                    <h2 class="blog-post-title">{{post.title}}</h2>
+                    <img ng-src="{{post.imageURL}}" class="img-responsive">
+                    <p class="blog-post-meta">{{post.date| date: 'hh:mm MMMM dd, yyyy'}} by <a href="#" class="blog-post-author">{{post.author}}</a></p>
+                    <p class="post-content">{{post.text}}</p>
+                </div><!-- /.blog-post -->
+                <!--<ul class="pager">
+                    <li><a href="#" role="button" class="btn ">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>-->
+            </div><!-- /.blog-main -->
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <h4>About</h4>
+                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                </div>
+
+                <div class="sidebar-module">
+                    <h4>Archives</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">March 2014</a></li>
+                        <li><a href="#">February 2014</a></li>
+                        <li><a href="#">January 2014</a></li>
+                        <li><a href="#">December 2013</a></li>
+                        <li><a href="#">November 2013</a></li>
+                        <li><a href="#">October 2013</a></li>
+                        <li><a href="#">September 2013</a></li>
+                        <li><a href="#">August 2013</a></li>
+                        <li><a href="#">July 2013</a></li>
+                        <li><a href="#">June 2013</a></li>
+                        <li><a href="#">May 2013</a></li>
+                        <li><a href="#">April 2013</a></li>
+                    </ol>
+                </div>
+                <div class="sidebar-module">
+                    <h4>Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>
+            </div><!-- /.blog-sidebar -->
+
+        </div>
+
+        <div ng-controller="NewPostCtrl">
+            <div class="modal" id="modal">
+                <div class="modal-header">
+                    <h2>New post</h2>
+                </div>
+                <div class="modal-body">
+                    <div ng-include="'views/new_post.html'"></div>
+                </div>
+            </div>
+            <a href="#" role="button" class="btn add-post-btn" data-toggle="modal" ng-click="showNewPostForm()">New post</a>
+        </div>
+        <div class="footer"></div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/es5-shim/es5-shim.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/json3/lib/json3.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+    <script src="posts.json"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/controllers.js"></script>
+
+  </body>
+</html>
